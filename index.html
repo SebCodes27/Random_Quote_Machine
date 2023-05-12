@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Star Wars Quote Generator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.cdnfonts.com/css/star-wars" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    </head>
+
+    <script>
+        $(document).ready(function() {
+            $("body").css("background-image", "url(https://wallpapers.com/images/hd/star-wars-galaxy-of-heroes-cover-j1fucmpgrjmxh2za.jpg)");
+            $("body").css("background-position", "top center");
+            $("h3").css("color", "#ffe81f");
+            $("h3").css("font-family", "Star Wars");
+            $("#quote-box").css("opacity", "92%");
+            $("#quote-box").css("max-width", "500px");
+            $("#quote-box").css("margin", "auto");
+        });
+    </script>
+
+    <body onload="initialQuote()">
+        <main>
+            <div class="container-fluid">
+                <h3 class="text-center">is this the quote you are looking for?"</h3>
+                <div class="well" id="quote-box">
+                <div class="row">
+                    <div class="col-xs-4">
+                            <div class="column">
+                                <a onclick="changeQuote()">
+                                    <div class="btn btn-default target" id="new-quote">Generate Quote</div>
+                                </a>
+                                
+                                <div class="row-xs-4">
+                                    <a id="tweet-quote" href="">
+                                    <div class="btn btn-default target"><i class="fa fa-twitter"></i> Twitter</div>
+                                    </a>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-xs-8">
+                        <div class="well" id="right-well">
+                            <div class="column">
+                                <p id="text">"I am one with the Force and the Force is one with me."</p>
+                                <p id="author">- Chirrut Imwe</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </main>
+    </body>
+    <script>
+        function changeQuote() {
+            let num = Math.floor(Math.random() * quotesArray.length);
+            let newQuote = document.getElementById("text").innerHTML = "\"" + quotesArray[num] + "\"";
+            let newAuthor = document.getElementById("author").innerHTML = authorArray[num];
+            document.getElementById("tweet-quote").setAttribute("href", "https://twitter.com/intent/tweet?text=" + newQuote + "%0A" + newAuthor + "&hashtags=SWForever")
+        }
+
+        function initialQuote() {
+            document.getElementById("tweet-quote").setAttribute("href", "https://twitter.com/intent/tweet?text=" + "\"I am one with the Force and the Force is one with me.\"" + "%0A" + "- Chirrut Imwe" + "&hashtags=SWForever")
+        }
+
+        let quotesArray = [
+            "Aww, but I was going into Tosche Station to pick up some power converters...",
+            "Do or do not. There is no try.",
+            "I am a Jedi, like my father before me.",
+            "Never tell me the odds!",
+            "Help me Obi-Wan Kenobi. You're my only hope.",
+            "I am one with the Force and the Force is one with me."
+        ];
+
+        let authorArray = [
+            "- Luke Skywalker",
+            "- Jedi Master Yoda",
+            "- Luke Skywalker",
+            "- Han Solo",
+            "- Princess Leia Organa",
+            "- Chirrut Imwe"
+        ];
+    </script>
+</html>
